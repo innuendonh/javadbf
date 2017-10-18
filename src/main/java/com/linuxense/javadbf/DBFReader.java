@@ -139,7 +139,7 @@ public class DBFReader extends DBFBase implements Closeable {
 	private static final long MILLISECS_PER_DAY = 24*60*60*1000;
 	private static final long TIME_MILLIS_1_1_4713_BC = -210866803200000L;
 
-	private DataInputStream dataInputStream;
+	protected DataInputStream dataInputStream;
 	private DBFHeader header;
 	private boolean trimRightSpaces = true;
 	private boolean showDeletedRows = false;
@@ -371,7 +371,7 @@ public class DBFReader extends DBFBase implements Closeable {
 		return recordObjects.toArray();
 	}
 
-	private Object getFieldValue(DBFField field) throws IOException {
+	protected Object getFieldValue(DBFField field) throws IOException {
 		int bytesReaded = 0;
 		switch (field.getType()) {
 		case CHARACTER:
